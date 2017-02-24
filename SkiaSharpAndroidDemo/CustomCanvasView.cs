@@ -61,11 +61,23 @@ namespace SkiaSharpAndroidDemo
 
 			canvas.Clear(0xFF59C0C8);
 
+			// tile the bitmap across the bottom
 			var y = info.Height - backgroundBitmap.Height;
 			for (var x = 0; x < info.Width; x += backgroundBitmap.Width)
 			{
 				canvas.DrawBitmap(backgroundBitmap, x, y);
 			}
+
+			//// we could also use a shader, so that we don't have to tile manually
+			//using (var paint = new SKPaint())
+			//{
+			//	paint.Shader = SKShader.CreateBitmap(
+			//		backgroundBitmap,        // the bitmap to tile
+			//		SKShaderTileMode.Repeat, // tile across the top
+			//		SKShaderTileMode.Clamp); // use the bottom color to fill the rest
+			//
+			//	canvas.DrawRect(info.Rect, paint);
+			//}
 		}
 	}
 }
