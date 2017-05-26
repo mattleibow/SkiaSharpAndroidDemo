@@ -1,5 +1,4 @@
 using System;
-using System.IO;
 using Android.Content;
 using Android.Runtime;
 using Android.Util;
@@ -39,18 +38,8 @@ namespace SkiaSharpAndroidDemo
 
 		private void Init()
 		{
-			// we need a seekable stream for decoding files
-			var ms = new MemoryStream();
-			using (var asset = Context.Assets.Open("background.png"))
-				asset.CopyTo(ms);
-			ms.Position = 0;
-
-			// this will dispose the memory stream
-			// and this will be disposed after decoding automatically
-			var stream = new SKManagedStream(ms, true);
-
 			// load the image
-			backgroundBitmap = SKBitmap.Decode(stream);
+			backgroundBitmap = SKBitmap.Decode(Context.Assets.Open("background.png"));
 		}
 
 		protected override void OnDraw(SKSurface surface, SKImageInfo info)

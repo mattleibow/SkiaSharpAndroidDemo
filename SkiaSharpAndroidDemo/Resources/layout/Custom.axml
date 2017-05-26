@@ -3,8 +3,8 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <skiasharp.views.android.SKCanvasView
-        android:id="@+id/canvasView"
+    <skiasharpandroiddemo.CustomCanvasView
+        android:id="@+id/customCanvasView"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 </LinearLayout>
